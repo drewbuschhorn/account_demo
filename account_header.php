@@ -10,8 +10,8 @@
 	<span>
 		<?php
 			if(isset($first_name))
-				echo "Hi, $first_name. ";
-			echo "[Logged in as <b>$username</b>]";
+				echo "Hi, ".htmlentities($first_name).". ";
+			echo "[Logged in as <b>".htmlentities($username)."</b>]";
 		?>
 	</span>
 	<span style="float: right;"><a href="dashboard.php" class="headerLink">Home</a> - <a href="profile.php" class="headerLink">Account</a> - <a href="logout.php" class="headerLink">Logout</a></span>

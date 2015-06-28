@@ -15,7 +15,7 @@
 		  
 		  $username = stripslashes($username);
 		  $password = stripslashes($password);
-		  $username = $conn->real_escape_string($username);
+		  $username = htmlentities($conn->real_escape_string($username));
 		  $password = $conn->real_escape_string($password);
 			
 

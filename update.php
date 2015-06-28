@@ -11,7 +11,7 @@
 	$result = "";
 	
 	if(!empty($_POST['email'])){
-		$email = $_POST['email'];
+		$email = htmlentities($_POST['email']);
 		$update = $conn->prepare("UPDATE users SET email=? WHERE username=?");
         $update->bind_param('ss', $email, $username);  // weird mysqli syntax: SS means two string parameters. 
                                                      // SIS would mean string, int, string
@@ -23,7 +23,7 @@
 		}
 	}
 	if(isset($_POST['first'])){
-		$first = $_POST['first'];
+		$first = htmlentities($_POST['first']);
 		$update = $conn->prepare("UPDATE users SET first_name=? WHERE username=?");
         $update->bind_param('ss', $first, $username);  // weird mysqli syntax: SS means two string parameters. 
                                                      // SIS would mean string, int, string
@@ -35,7 +35,7 @@
 		}
 	}
 	if(isset($_POST['last'])){
-		$last = $_POST['last'];
+		$last = htmlentities($_POST['last']);
         $update = $conn->prepare("UPDATE users SET last_name=? WHERE username=?");
         $update->bind_param('ss', $last, $username);  // weird mysqli syntax: SS means two string parameters. 
                                                      // SIS would mean string, int, string

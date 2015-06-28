@@ -69,24 +69,24 @@
 			<table>
 				<tr>
 					<td>Username:</td>
-					<td><?php echo $username;?></td>
+					<td><?php echo htmlentities($username);?></td>
 				</tr>
 				<tr>
 					<td>Email:</td>
-					<td id="email"><?php echo $email;?></td>
-					<td id="email_update"><input name="email" type="email" value="<?php echo $email;?>"></td>
+					<td id="email"><?php echo htmlentities($email);?></td>
+					<td id="email_update"><input name="email" type="email" value="<?php echo htmlentities($email);?>"></td>
 					<td><a href="#" id="email_link">edit</a></td>
 				</tr>
 				<tr>
 					<td>First Name:</td>
-					<td id="first"><?php echo $first_name;?></td>
-					<td id="first_update"><input name="first" type="text" value="<?php echo $first_name;?>"></td>
+					<td id="first"><?php echo htmlentities($first_name);?></td>
+					<td id="first_update"><input name="first" type="text" value="<?php echo htmlentities($first_name);?>"></td>
 					<td><a href="#" id="first_link">edit</a></td>
 				</tr>
 				<tr>
 					<td>Last Name:</td>
-					<td id="last"><?php echo $last_name;?></td>
-					<td id="last_update"><input name="last" type="text" value="<?php echo $last_name;?>"></td>
+					<td id="last"><?php echo htmlentities($last_name);?></td>
+					<td id="last_update"><input name="last" type="text" value="<?php echo htmlentities($last_name);?>"></td>
 					<td><a href="#" id="last_link">edit</a></td>
 				</tr>
 				<tr>
