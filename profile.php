@@ -3,6 +3,7 @@
 	$_SESSION['get_updated_info'] = TRUE;
 	include('session.php');
 	include('update.php');
+	require __DIR__ . '/vendor/autoload.php';
 ?>
 
 <!DOCTYPE html>
@@ -62,6 +63,8 @@
 	<body>
 		<?php
 			include('account_header.php');
+			$config = HTMLPurifier_Config::createDefault();
+			$purifier = new HTMLPurifier($config);
 		?>
 		<form action="" method="post"><div>
 			<div id="updated"><?php if(isset($result)) echo $result;?></div>
@@ -69,24 +72,24 @@
 			<table>
 				<tr>
 					<td>Username:</td>
-					<td><?php echo htmlentities($username);?></td>
+					<td><?php echo $purifier->purify($username);?></td>
 				</tr>
 				<tr>
 					<td>Email:</td>
-					<td id="email"><?php echo htmlentities($email);?></td>
-					<td id="email_update"><input name="email" type="email" value="<?php echo htmlentities($email);?>"></td>
+					<td id="email"><?php echo $purifier->purify($email);?></td>
+					<td id="email_update"><input name="email" type="email" value="<?php echo $purifier->purify($email);?>"></td>
 					<td><a href="#" id="email_link">edit</a></td>
 				</tr>
 				<tr>
 					<td>First Name:</td>
-					<td id="first"><?php echo htmlentities($first_name);?></td>
-					<td id="first_update"><input name="first" type="text" value="<?php echo htmlentities($first_name);?>"></td>
+					<td id="first"><?php echo $purifier->purify($first_name);?></td>
+					<td id="first_update"><input name="first" type="text" value="<?php echo $purifier->purify($first_name);?>"></td>
 					<td><a href="#" id="first_link">edit</a></td>
 				</tr>
 				<tr>
 					<td>Last Name:</td>
-					<td id="last"><?php echo htmlentities($last_name);?></td>
-					<td id="last_update"><input name="last" type="text" value="<?php echo htmlentities($last_name);?>"></td>
+					<td id="last"><?php echo $purifier->purify($last_name);?></td>
+					<td id="last_update"><input name="last" type="text" value="<?php echo $purifier->purify($last_name);?>"></td>
 					<td><a href="#" id="last_link">edit</a></td>
 				</tr>
 				<tr>

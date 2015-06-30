@@ -9,9 +9,12 @@
 	</style>
 	<span>
 		<?php
+			require __DIR__ . '/vendor/autoload.php';
+			$config = HTMLPurifier_Config::createDefault();
+			$purifier = new HTMLPurifier($config);
 			if(isset($first_name))
-				echo "Hi, ".htmlentities($first_name).". ";
-			echo "[Logged in as <b>".htmlentities($username)."</b>]";
+				echo "Hi, ".$purifier->purify($first_name).". ";
+			echo "[Logged in as <b>".$purifier->purify($username)."</b>]";
 		?>
 	</span>
 	<span style="float: right;"><a href="dashboard.php" class="headerLink">Home</a> - <a href="profile.php" class="headerLink">Account</a> - <a href="logout.php" class="headerLink">Logout</a></span>

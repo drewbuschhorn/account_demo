@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	require __DIR__ . '/vendor/autoload.php';
+	$config = HTMLPurifier_Config::createDefault();
+	$purifier = new HTMLPurifier($config);
 	$error='';
 	if(isset($_POST['submit'])){
 		if(empty($_POST['username'])){
@@ -54,7 +57,7 @@
 			} else {
 				$error = "There was an error creating your account :(".$conn->error;
 				if(substr($conn->error,0,15) === "Duplicate entry"){
-					$uerror = "The username \".$username.\" already exists. Try something else!";
+					$uerror = "The username \".$purifier->purify($username).\" already exists. Try something else!";
 					unset($error);
 				}
 				
