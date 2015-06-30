@@ -27,8 +27,8 @@
 		  $username = stripslashes($username);
 		  $email = stripslashes($email);
 		  $password = stripslashes($password);
-		  $username = htmlentities($conn->real_escape_string($username));
-		  $email = htmlentities($conn->real_escape_string($email));
+		  $username = $conn->real_escape_string($username);
+		  $email = $conn->real_escape_string($email);
 		  $password = $conn->real_escape_string($password);
 			
 
@@ -54,7 +54,7 @@
 			} else {
 				$error = "There was an error creating your account :(".$conn->error;
 				if(substr($conn->error,0,15) === "Duplicate entry"){
-					$uerror = "The username \".htmlentities($username).\" already exists. Try something else!";
+					$uerror = "The username \".$username.\" already exists. Try something else!";
 					unset($error);
 				}
 				
